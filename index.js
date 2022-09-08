@@ -7,14 +7,13 @@ app.use(cookieParser());
 app.use((req, res, next) => { return next(); });
 
 app.get('/', (req, res, next) => {
-    r
+    
 });
 
 app.ws('/ws', (ws, req) => {
     ws.on('message', (msg) => {
         console.log(msg);
     });
-    console.log('socket', req.testing);
 });
 
 app.listen(80);
