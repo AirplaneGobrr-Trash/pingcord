@@ -88,6 +88,18 @@ async function get(path) {
     }
 }
 
+async function makeArray(path, array){
+    if (!array) array = {}
+    if (!await this.has(path)) this.set(path, array)
+    return await this.get(path)
+}
+
+async function makeObject(path, object){
+    if (!object) object = {}
+    if (!await this.has(path)) this.set(path, object)
+    return await this.get(path)
+}
+
 
 module.exports = {
     set,
@@ -95,5 +107,7 @@ module.exports = {
     has,
     push,
     save,
-    load
+    load,
+    makeArray,
+    makeObject
 }

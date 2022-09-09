@@ -10,10 +10,14 @@
         "1": "server",
         "2": "channel",
         "3": "messages",
-        "4": "user"
+        "3-1": "category",
+        "3--1": "message only type",
+        "4": "user",
+        "5": "token"
         //Other IDs to add:
         //Emojis, webhook, files
         //all this needs server data included in it so im not sure how to do that...
+        //Files might not get ID's again im not 100% sure yet...
     },
     "users": {
         "4_time": {
@@ -50,10 +54,22 @@
                             "files": [] //Ingore
                         }
                     },
-                    "webhooks": {} //Ingore
+                    "webhooks": {}, //Ingore
+                    "name": "general",
+                    "index": 0,
+                    "category": "3-1_0",
+                    "type": "3--1"
+                }
+            },
+            "categorys": {
+                "3-1_0": {
+                    "rolePerms": {}, //Ingore
+                    "index": 0
                 }
             }
         }
+    },
+    "userTokenFind": {
+        "5_token": "4_time"
     }
-    
 }
