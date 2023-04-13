@@ -18,22 +18,12 @@ const textToNumber = (text) => {
   }
 }
 
-const numberToText = (number, textLenth) => {
-    let text = "";
-    for (let i = 0; i < textLenth; i++) {
-      text += String.fromCharCode(number % 26 + 65);
-      number = Math.floor(number / 26);
-    }
-    return text;
-}
-
 app.get('/', (req, res) => {
   res.render("pingcord")
 });
 
 app.get("/test/:text",(req, res) => {
     let text = req.params.text;
-    let number = textToNumber(text);
     res.json({
         m: textToNumber(text),
         o: String.fromCharCode(text)
