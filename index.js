@@ -1,20 +1,49 @@
-const express = require('express');
-const app = express();
-const expressWs = require('express-ws')(app);
-var cookieParser = require('cookie-parser');
-app.use(cookieParser());
+const { app, express, http, io, server } = require('./web')
 
-app.use((req, res, next) => { return next(); });
+// Text to number function
 
-app.get('/', (req, res, next) => {
-    r
+/**
+ * 
+ * @param {String} text 
+ * @returns 
+ */
+const textToNumber = (text) => {
+  let number = 0;
+  for (let i = 0; i < text.length; i++) {
+    number += text.charCodeAt(i);
+  }
+  return {
+    n: number,
+    l: text.length
+  }
+}
+
+const numberToText = (number, textLenth) => {
+    let text = "";
+    for (let i = 0; i < textLenth; i++) {
+      text += String.fromCharCode(number % 26 + 65);
+      number = Math.floor(number / 26);
+    }
+    return text;
+}
+
+app.get('/', (req, res) => {
+  res.render("pingcord")
 });
 
-app.ws('/ws', (ws, req) => {
-    ws.on('message', (msg) => {
-        console.log(msg);
+app.get("/test/:text",(req, res) => {
+    let text = req.params.text;
+    let number = textToNumber(text);
+    res.json({
+        m: textToNumber(text),
+        o: String.fromCharCode(text)
     });
-    console.log('socket', req.testing);
+})
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
 });
 
-app.listen(80);
+server.listen(3000, () => {
+  console.log('listening on *:3000');
+});
