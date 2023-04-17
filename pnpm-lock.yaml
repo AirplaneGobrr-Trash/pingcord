@@ -2,14 +2,18 @@ lockfileVersion: 5.4
 
 specifiers:
   '@airplanegobrr/database': ^2.0.1
+  cors: ^2.8.5
   ejs: ^3.1.8
   express: ^4.18.1
+  json-bitmask: ^1.0.0
   socket.io: ^4.6.1
 
 dependencies:
   '@airplanegobrr/database': 2.0.1
+  cors: 2.8.5
   ejs: 3.1.9
   express: 4.18.2
+  json-bitmask: 1.0.0
   socket.io: 4.6.1
 
 packages:
@@ -389,6 +393,10 @@ packages:
       chalk: 4.1.2
       filelist: 1.0.4
       minimatch: 3.1.2
+    dev: false
+
+  /json-bitmask/1.0.0:
+    resolution: {integrity: sha512-nK2y+ExFK3U+CrQ9SSbPzI29BJA3Mc3NKCWEZbvM6Wteax5dMoaBheimTGSvwlR7IZ5ewHZAtPSJHetAHhrzTw==}
     dev: false
 
   /media-typer/0.3.0:

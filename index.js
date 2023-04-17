@@ -1,37 +1,24 @@
 const { app, express, http, io, server } = require('./web')
+const {create} = require('./combiner')
+const combiner = create(app, io)
 
-// Text to number function
+combiner.addRoute('/api/guilds/:id/getMembers', 'api::guilds::getMembers', null, (data, callback) => {
+  console.log(data)
+  callback(data)
+})
 
-/**
- * 
- * @param {String} text 
- * @returns 
- */
-const textToNumber = (text) => {
-  let number = 0;
-  for (let i = 0; i < text.length; i++) {
-    number += text.charCodeAt(i);
-  }
-  return {
-    n: number,
-    l: text.length
-  }
-}
+combiner.addRoute('/api/guilds/:id/getMessages', 'api::guilds::getMessages', null, (data, callback) => {
+  console.log(data)
+  callback(data)
+})
+
+combiner.addRoute("/api/guilds/create", "api::guilds::create", null, (data, callback) => {
+  console.log(data)
+  callback(data)
+})
 
 app.get('/', (req, res) => {
   res.render("pingcord")
-});
-
-app.get("/test/:text",(req, res) => {
-    let text = req.params.text;
-    res.json({
-        m: textToNumber(text),
-        o: String.fromCharCode(text)
-    });
-})
-
-io.on('connection', (socket) => {
-  console.log('a user connected');
 });
 
 server.listen(3000, () => {
