@@ -4,7 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8">
-    <title>Pingcord</title>
+    <title>Discord</title>
     <!-- Load style via /assets/styles/disordV2.css-->
     <link rel="stylesheet" href="/assets/styles/discordV2.css">
     <!-- Load script via /assets/scripts/disordV2.js-->
@@ -23,10 +23,13 @@
     </div>
 
     <div class="channelList" id="channelList">
-        <button>Home</button>
-        <button>News</button>
-        <button>Contact</button>
-        <button>About</button>
+        <details>
+            <summary>Info <a style="display: inline; right: 1;">+</a></summary>
+            <button>Home</button>
+            <button>News</button>
+            <button>Contact</button>
+            <button>About</button>
+        </details>
     </div>
 
     <div class="div">
@@ -50,8 +53,8 @@
             
 
             <div class="loginContainer">
-                <label for="uname"><b>Email</b></label>
-                <input class="loginInput" type="text" placeholder="Enter Email" name="uname" required>
+                <label for="uname"><b>Username</b></label>
+                <input class="loginInput" type="text" placeholder="Enter Username" name="uname" required>
 
                 <label for="psw"><b>Password</b></label>
                 <input class="loginInput" type="password" placeholder="Enter Password" name="psw" required>

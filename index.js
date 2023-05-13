@@ -1,29 +1,26 @@
-const express = require('express');
-const app = express();
-const http = require('http');
-const server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
-var cookieParser = require('cookie-parser');
+const { app, express, http, io, server } = require('./web')
+const {create} = require('./combiner')
+const combiner = create(app, io)
 
-const functions = require("./functions")
-app.use(cookieParser());
+combiner.addRoute('/api/guilds/:id/getMembers', 'api::guilds::getMembers', null, (data, callback) => {
+  console.log(data)
+  callback(data)
+})
 
-//views
-app.set('view engine', 'ejs');
-//public
-app.use(express.static('public'))
+combiner.addRoute('/api/guilds/:id/getMessages', 'api::guilds::getMessages', null, (data, callback) => {
+  console.log(data)
+  callback(data)
+})
 
-app.use((req, res, next) => { return next(); });
+combiner.addRoute("/api/guilds/create", "api::guilds::create", null, (data, callback) => {
+  console.log(data)
+  callback(data)
+})
 
-app.get('/', (req, res, next) => {
-    res.render("pingcord")
+app.get('/', (req, res) => {
+  res.render("pingcord")
 });
 
-io.on('connection', (socket) => {
-    console.log('a user connected');
-  });
-
-  server.listen(80, () => {
-    console.log('listening on *:3000');
-  });
+server.listen(3000, () => {
+  console.log('listening on *:3000');
+});
